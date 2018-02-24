@@ -1,7 +1,6 @@
 package com.example.jonib.forcweather;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -18,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jonib.forcweather.Helper_package.Helper_class;
-import com.example.jonib.forcweather.Model.Main;
 import com.example.jonib.forcweather.Model.OpenWeatherMap;
 import com.example.jonib.forcweather.common_package.Common_class;
 import com.google.gson.Gson;
@@ -26,7 +24,6 @@ import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Type;
-import java.net.Proxy;
 
 public class MainActivity extends AppCompatActivity implements LocationListener {
 
@@ -163,11 +160,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
             txtCity.setText(String.format("%s, %s", openWeatherMap.getName(), openWeatherMap.getSys().getCountry()));
             txtLastUpdate.setText(String.format("Last Updated: %s", Common_class.getDateNow()));
-            txtDescription.setText(String.format("%s", openWeatherMap.getWeatherList().get(0).getDescription()));
+            txtDescription.setText(String.format("%s", openWeatherMap.getWeather().get(0).getDescription()));
             txtHumidity.setText(String.format("%s/%s", Common_class.unixTimeStampToDateTime(openWeatherMap.getSys().getSunrise()), Common_class.unixTimeStampToDateTime(openWeatherMap.getSys().getSunset())));
             txtCelsius.setText(String.format("%.2f °C.", openWeatherMap.getMain().getTemp()));
             Picasso.with(MainActivity.this)
-                    .load(Common_class.getImage(openWeatherMap.getWeatherList().get(0).getIcon()))
+                    .load(Common_class.getImage(openWeatherMap.getWeather().get(0).getIcon()))
                     .into(imageView);
 
         }
