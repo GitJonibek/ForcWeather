@@ -25,7 +25,7 @@ import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Type;
 
-public class MainActivity extends AppCompatActivity implements LocationListener {
+public class MainActivity extends AppCompatActivity implements LocationListener{
 
     TextView txtCity, txtLastUpdate, txtDescription, txtHumidity, txtTime, txtCelsius;
     ImageView imageView;
@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         txtCelsius = findViewById(R.id.txtCelcius);
         imageView = findViewById(R.id.imageView);
 
+
+
         //Getting Coordinates
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         provider = locationManager.getBestProvider(new Criteria(), false);
@@ -67,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         Location location = locationManager.getLastKnownLocation(provider);
         if(location == null)
             Toast.makeText(this, "No Location, Please Anable your location", Toast.LENGTH_LONG);
-
     }
 
     @Override
